@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
 import './Gallery.css'
+
+import { useEffect } from 'react';
 import axios from 'axios';
 
 function Gallery(){
@@ -11,6 +12,15 @@ function Gallery(){
     async function downloadData(){
         const response = await axios.get(API_URL);
         console.log(response.data);
+
+        //store data of the api
+        const photosData = response.data.photos;  //array of photo items
+        console.log(photosData);
+
+        const PromiseData = photosData.map((item)=> axios.get(item.url)); 
+        console.log(PromiseData);
+
+        const ListData = await axios.all(PromiseData);
     }
 
     useEffect(()=>{

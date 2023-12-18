@@ -20,6 +20,17 @@ useEffect(()=>{
     },[])
 ```
 
+4. Now store the data from the API request in a variable(photosData) and create promise object which iterates through each variable and makes an `axios.get()` request to fetch all urls of the images.
+```
+        const photosData = response.data.photos; 
+        console.log(photosData);
+
+        const PromiseData = photosData.map((item)=> axios.get(item.url)); 
+        console.log(PromiseData);
+```
+
+
+
 
 ### Run the program in local machine
 ```
