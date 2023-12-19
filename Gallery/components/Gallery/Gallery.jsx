@@ -1,9 +1,8 @@
 import './Gallery.css'
 import ImageCard from '../ImageCard/ImageCard';
-
 import { useEffect, useState } from 'react';
 
-const Gallery = () => {
+export default function Gallery(){
     const [data, setData] = useState([])
     const API_URL = "https://api.slingacademy.com/v1/sample-data/photos?limit=50";
 
@@ -15,7 +14,6 @@ const Gallery = () => {
     }
 
     useEffect(()=>{
-        // call the function to display to the console
         downloadData();
     },[])
     return(
@@ -35,4 +33,3 @@ const Gallery = () => {
         </div>
     );
 }
-export default Gallery;

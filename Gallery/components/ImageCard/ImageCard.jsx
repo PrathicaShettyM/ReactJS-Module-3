@@ -9,10 +9,10 @@ function ImageCard({imageUrl, id}){
 
     return(
         <div>
-            <img src={imageUrl} onClick={pageRedirect}/>
+            <img src={imageUrl} onClick={pageRedirect} alt=""/>
         </div>
     )
 
-
 }
+
 export default ImageCard;
