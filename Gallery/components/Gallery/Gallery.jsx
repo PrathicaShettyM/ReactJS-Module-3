@@ -1,33 +1,17 @@
 import './Gallery.css'
+import ImageCard from '../ImageCard/ImageCard';
 
-import { useEffect } from 'react';
-import axios from 'axios';
+import { useEffect, useState } from 'react';
 
-function Gallery(){
-    //axios.get() : returns an array of promises
-    //API URL
-    const API_URL = "https://api.slingacademy.com/v1/sample-data/photos";
+const Gallery = () => {
+    const [data, setData] = useState([])
+    const API_URL = "https://api.slingacademy.com/v1/sample-data/photos?limit=50";
 
-    // async function for api data
-    async function downloadData(){
-        const response = await axios.get(API_URL);
-        //store data of the api
-        const photosData = response.data.photos;  //array of photo items
-
-        const PromiseData = photosData.map((item)=> axios.get(item.url)); 
-
-        const ListData = await axios.all(PromiseData);
-
-        const FinalList = ListData.map(itemData => {
-            const items = itemData.data;
-            return{
-               
-              
-            }
-        })
-
-        console.log(FinalList);
-
+    const downloadData = async() => {
+        const response = await fetch(API_URL);
+        const {photos} = await response.json();
+        setData(photos)
+        console.log(photos);
     }
 
     useEffect(()=>{
@@ -42,9 +26,13 @@ function Gallery(){
             </div>
             
             <div>
-
+                {
+                    data?.map((e,i)=>{
+                        return <ImageCard id={e.id} imageUrl={e.url} key={i}/>
+                    })
+                }
             </div>   
         </div>
-    )
+    );
 }
 export default Gallery;
