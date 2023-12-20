@@ -3,8 +3,7 @@ This repository contains a gallery application built using ReactJS.
 
 ### Run the program in local machine
 ```
-  cd Gallery
-  npm install
+  cd gallery-app
   npm run dev
 ```
 
