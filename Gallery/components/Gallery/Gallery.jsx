@@ -2,12 +2,10 @@ import './Gallery.css'
 import ImageCard from '../ImageCard/ImageCard';
 import { useEffect, useState } from 'react';
 
-export default function Gallery(){
+function Gallery(){
     const [data, setData] = useState([])
-    const API_URL = "https://api.slingacademy.com/v1/sample-data/photos?limit=50";
-
     const downloadData = async() => {
-        const response = await fetch(API_URL);
+        const response = await fetch("https://api.slingacademy.com/v1/sample-data/photos?limit=20");
         const {photos} = await response.json();
         setData(photos)
         console.log(photos);
@@ -17,8 +15,7 @@ export default function Gallery(){
         downloadData();
     },[])
     return(
-        <div className='landingPage'>
-           
+        <div className='landingPage'>   
             <div>
                 <h1>GALLERY</h1>
             </div>
@@ -33,3 +30,5 @@ export default function Gallery(){
         </div>
     );
 }
+
+export default Gallery;

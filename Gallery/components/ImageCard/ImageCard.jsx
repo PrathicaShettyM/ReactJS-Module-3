@@ -3,13 +3,13 @@ import {useNavigate} from "react-router-dom"
 function ImageCard({imageUrl, id}){
     const navigate = useNavigate()
 
-    const pageRedirect = () => {
+    const redirectToPage = () => {
         navigate(`/${id}`)
     }
 
     return(
         <div>
-            <img src={imageUrl} onClick={pageRedirect} alt=""/>
+            <img src={imageUrl} onClick={redirectToPage} alt=""/>
         </div>
     )
 
